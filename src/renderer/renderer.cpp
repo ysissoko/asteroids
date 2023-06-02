@@ -1,8 +1,7 @@
 #include <src/renderer/renderer.hpp>
 
-Renderer::Renderer(std::shared_ptr<GameState> gs)
+Renderer::Renderer(std::shared_ptr<GameState> gs) : gs_{gs}
 {
-    gs_ = gs;
 }
 
 void Renderer::Render(sf::RenderWindow &window)

@@ -6,8 +6,8 @@
 Vehicle::Vehicle(const std::string_view &name, std::shared_ptr<GameState> gs, std::shared_ptr<SoundPlayer> sp) : GameObject(name), gs_{gs}, sp_{sp}
 {
     ctx_ = std::make_shared<fsm::vehicle::states::VehicleContext>();
-
     ctx_->TransitionTo(std::make_shared<fsm::vehicle::states::VehicleState>());
+
     InitDrawable();
 }
 

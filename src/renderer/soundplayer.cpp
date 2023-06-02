@@ -17,14 +17,14 @@ void SoundPlayer::PlaySound(std::string_view name)
                     sound.setVolume(100.f);
                     sound.play(); });
 
-    // try
-    // {
-    //     future.get();
-    // }
-    // catch (const SoundNotFoundException &ex)
-    // {
-    //     spdlog::error("{}", ex.what());
-    // }
+    try
+    {
+        future.get();
+    }
+    catch (const SoundNotFoundException &ex)
+    {
+        spdlog::error("{}", ex.what());
+    }
 }
 
 void SoundPlayer::LoadSound(std::string_view name, const std::filesystem::path &path)
