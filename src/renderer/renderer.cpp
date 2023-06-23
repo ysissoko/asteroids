@@ -10,7 +10,7 @@ void Renderer::Render(sf::RenderWindow &window)
 
     for (auto drawable_obj : gs_->get_objects())
     {
-        auto drawing = drawable_obj.second->Render();
+        auto drawing = drawable_obj.second->get_shape();
         if (drawing)
             window.draw(*drawing);
     }

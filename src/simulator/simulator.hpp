@@ -15,6 +15,7 @@ public:
     void Update(float);
 
     std::shared_ptr<GameState> get_game_state() const { return gs_; }
+    void CheckCollision(std::shared_ptr<GameObject>);
 };
 
 #endif

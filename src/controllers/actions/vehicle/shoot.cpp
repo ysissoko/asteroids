@@ -9,7 +9,7 @@ namespace actions::vehicle
 
     void ShootAction::Execute()
     {
-        spdlog::debug("executing shoot action");
+        // spdlog::debug("executing shoot action");
         vehicle_->Shoot();
     }
 }

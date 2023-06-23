@@ -19,7 +19,7 @@ PcController::PcController(std::shared_ptr<Vehicle> vehicle) : Controller("pc-co
 void PcController::InitActions(std::shared_ptr<Vehicle> vehicle)
 {
     AddKeyPressedAction(sf::Keyboard::Key::Up, std::make_shared<AccelerateAction>(vehicle));
-    AddKeyPressedAction(sf::Keyboard::Key::Down, std::make_shared<DeccelerateAction>(vehicle));
+    // AddKeyPressedAction(sf::Keyboard::Key::Down, std::make_shared<DeccelerateAction>(vehicle));
     AddKeyPressedAction(sf::Keyboard::Key::Left, std::make_shared<RotateCCWAction>(vehicle));
     AddKeyPressedAction(sf::Keyboard::Key::Right, std::make_shared<RotateCWAction>(vehicle));
     AddKeyPressedAction(sf::Keyboard::Key::Space, std::make_shared<ShootAction>(vehicle));

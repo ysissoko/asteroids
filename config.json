@@ -1,0 +1,41 @@
+{
+    "vehicle": {
+        "acceleration": 0.002,
+        "decceleration": 0.0002,
+        "invincibleMaxDuration": 10,
+        "blinkMaxDuration": 0.3,
+        "life": 3,
+        "initialPos": { "x": 400, "y": 300 },
+        "bullet": {
+            "reloadTimeMs": 0.3,
+            "speed": 380
+        },
+        "rotateSpeed": 200,
+        "maxSpeed": 300
+    },
+    "generators": [{
+        "pos": {"x": 800, "y": 300 },
+        "freq": 2,
+        "angle": { "min": -45, "max": 45 },
+        "asteroid": {
+            "speed": { "min": 100, "max": 200 },
+            "size": 20,
+            "pointCount": 8,
+            "life": { "max": 3, "min": 1 },
+            "maxCount": 10,
+            "peak": { "min": 0.4, "max": 1 }
+        }
+    },{
+        "pos": {"x": 0, "y": 300},
+        "freq": 2,
+        "angle": { "min": -225, "max": -135 },
+        "asteroid": {
+            "size": 20,
+            "pointCount": 8,
+            "speed": { "min": 100, "max": 200 },
+            "life": { "max": 3, "min": 1},
+            "maxCount": 10,
+            "peak": { "min": 0.4, "max": 1 }
+        }
+    }]
+}

@@ -13,12 +13,9 @@
 
 #include <cmath>
 
-constexpr float kAcceleration = 0.001f;
-constexpr float kReloadTimeMs = 0.8f;
-constexpr const float kRotateSpeed{45.0f};
-constexpr const uint8_t kMaxSpeed{150};
+#include <nlohmann/json.hpp>
 
-constexpr double deg2rad(float angle) { return angle * M_PI / 180; }
+using json = nlohmann::json;
 
 class Vehicle : public GameObject, public std::enable_shared_from_this<Vehicle>
 {
@@ -26,13 +23,26 @@ private:
     std::shared_ptr<fsm::vehicle::states::VehicleContext> ctx_{nullptr};
     float heading_angle_{0};
     float speed_{0};
-    float reload_time_{kReloadTimeMs};
+    float reload_time_{0};
     std::shared_ptr<GameState> gs_{nullptr};
     std::shared_ptr<SoundPlayer> sp_{nullptr};
 
+    float acceleration_{0.004f};
+    float decceleration_{0.0001};
+    float reload_time_ms_{0.3f};
+    float rotate_speed_{90.0f};
+    unsigned int max_speed_{300};
+    uint8_t life_;
+    sf::Vector2f initial_position_;
+    float invincible_duration_;
+    float invincible_max_duration_;
+    float blink_duration_{0};
+    float blink_max_duration_;
+    float bullet_speed_{280};
+
 public:
-    Vehicle(const std::string_view &name, std::shared_ptr<GameState> gs, std::shared_ptr<SoundPlayer> sp);
-    virtual ~Vehicle() = default;
+    Vehicle(const std::string_view &name, std::shared_ptr<GameState> gs, std::shared_ptr<SoundPlayer> sp, json config);
+    ~Vehicle() final = default;
 
     void InitDrawable();
     void Shoot() const { ctx_->RequestShoot(); }
@@ -42,14 +52,19 @@ public:
     void RotateStop() const { ctx_->RequestRotateStop(); }
     void Accelerate() const { ctx_->RequestAccelerate(); }
     void Deccelerate() const { ctx_->RequestDeccelerate(); }
+    void RequestIdle() const { ctx_->RequestIdle(); }
+    void Respawn();
 
     void Update(float elapsed_time) override;
     void UpdatePosition(float elapsed_time);
     void UpdateRotation(float elapsed_time);
     void UpdateShooting(float elapsed_time);
+    void UpdateInvincible(float elapsed_time);
+
+    void CollideWith(std::shared_ptr<GameObject>) override;
 
     float get_heading_angle() const { return heading_angle_; }
-    std::shared_ptr<sf::CircleShape> get_shape() const { return vehicle_shape_; }
+    float get_bullet_speed() const { return bullet_speed_; }
 
 private:
     std::shared_ptr<sf::CircleShape> vehicle_shape_;

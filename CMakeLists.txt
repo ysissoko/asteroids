@@ -16,10 +16,12 @@ configure_file(config.h.in config.h)
 # find sfml library installed on filesystem
 find_package(SFML 2.5 COMPONENTS system window graphics network audio REQUIRED)
 find_package(spdlog REQUIRED)
+find_package(nlohmann_json 3.11.2 REQUIRED)
 
 # libs
 list(APPEND EXTRA_LIBS sfml-graphics sfml-audio)
 list(APPEND EXTRA_LIBS spdlog::spdlog)
+list(APPEND EXTRA_LIBS nlohmann_json::nlohmann_json)
 
 # Sources
 list(APPEND SOURCES src/main.cpp)
@@ -40,6 +42,10 @@ list(APPEND SOURCES src/controllers/actions/vehicle/stop-shoot.cpp)
 list(APPEND SOURCES src/fsm/vehicle/states/vehicle-state.cpp)
 list(APPEND SOURCES src/vehicle/bullet.cpp)
 list(APPEND SOURCES src/renderer/soundplayer.cpp)
+
+## Asteroids
+list(APPEND SOURCES src/asteroids/asteroid.cpp)
+list(APPEND SOURCES src/asteroids/generator.cpp)
 
 ## Game
 list(APPEND SOURCES src/game/game.cpp)

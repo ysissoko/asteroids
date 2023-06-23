@@ -9,7 +9,7 @@ namespace actions::vehicle
 
     void RotateCCWAction::Execute()
     {
-        spdlog::debug("executing rotate ccw action");
+        // spdlog::debug("executing rotate ccw action");
         vehicle_->RotateCCW();
     }
 };

@@ -4,17 +4,36 @@
 #include <unordered_map>
 #include <memory>
 #include <src/game/game-object.hpp>
+#include <algorithm>
+#include <spdlog/spdlog.h>
 
 class GameState
 {
 public:
     GameState();
-    void AddObject(std::shared_ptr<GameObject> obj) { objects_.emplace(std::make_pair(obj->get_id(), obj)); };
-    void RemoveObject(std::shared_ptr<GameObject> obj) { objects_.erase(obj->get_id()); };
+    void AddObject(std::shared_ptr<GameObject> obj) { objects_.try_emplace(obj->get_id(), obj); };
+    void RemoveObject(std::shared_ptr<GameObject> obj)
+    {
+        if (objects_.count(obj->get_id()))
+            objects_.erase(obj->get_id());
+    };
+    void RemoveObject(uint64_t id)
+    {
+        spdlog::debug("objects_size before {}", objects_.size());
+        spdlog::debug("erase object id {}", id);
+        objects_.erase(id);
+        spdlog::debug("objects_size after {}", objects_.size());
+    };
     std::shared_ptr<GameObject> get_object(uint64_t id) const { return objects_.at(id); };
     std::unordered_map<uint64_t, std::shared_ptr<GameObject>> get_objects() const { return objects_; };
     void set_player(std::shared_ptr<GameObject> go) { go_ = go; };
     std::shared_ptr<GameObject> get_player() const { return go_; };
+
+    long GetObjectCount(ObjectType type)
+    {
+        return std::count_if(objects_.begin(), objects_.end(), [&type](std::pair<uint64_t, std::shared_ptr<GameObject>> obj)
+                             { return obj.second->get_type() == type; });
+    }
 
 private:
     std::shared_ptr<GameObject> go_;

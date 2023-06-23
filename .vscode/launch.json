@@ -7,7 +7,6 @@
         "miDebuggerPath": "/usr/bin/gdb"
     },
     "program": "/home/yasuke/projects/cpp/asteroids/build/Asteroids",
-    "cwd": "${workspaceFolder}",
     "configurations": [
         {
             "name": "(gdb) Launch",
@@ -16,7 +15,7 @@
             "program": "/home/yasuke/projects/cpp/asteroids/build/Asteroids",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "/home/yasuke/projects/cpp/asteroids/build",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",

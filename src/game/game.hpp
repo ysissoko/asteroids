@@ -11,6 +11,7 @@
 #include <src/controllers/ievent-handler.hpp>
 #include <src/controllers/pc-controller.hpp>
 #include <src/renderer/soundplayer.hpp>
+#include <src/asteroids/generator.hpp>
 
 class Game
 {
@@ -23,6 +24,8 @@ private:
     std::shared_ptr<Vehicle> vehicle_{nullptr};
     std::shared_ptr<PcController> pc_controller_{nullptr};
     std::shared_ptr<SoundPlayer> sp_{nullptr};
+    std::shared_ptr<Generator> gen_{nullptr};
+    std::shared_ptr<Generator> gen2_{nullptr};
     std::vector<std::shared_ptr<IEventHandler>> event_handlers_;
 
     void Init();

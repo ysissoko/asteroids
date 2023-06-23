@@ -9,7 +9,7 @@ namespace actions::vehicle
 
     void AccelerateAction::Execute()
     {
-        spdlog::debug("executing accelerate action");
+        // spdlog::debug("executing accelerate action");
         vehicle_->Accelerate();
     }
 }

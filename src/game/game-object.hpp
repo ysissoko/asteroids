@@ -4,35 +4,36 @@
 #include <string>
 #include <memory>
 #include <SFML/System/Vector2.hpp>
-#include <SFML/Graphics/Drawable.hpp>
+#include <SFML/Graphics/Shape.hpp>
+#include "object-type.hpp"
 
 class GameObject
 {
 public:
-    explicit GameObject(const std::string_view &);
-    sf::Vector2<float> get_position() const { return position_; };
+    explicit GameObject(ObjectType, const std::string_view &);
+    virtual ~GameObject() = default;
 
-    void set_mass(float mass) { mass_ = mass; }
-    void set_position(const sf::Vector2<float> &position) { position_ = position; };
-    void set_drawable(std::shared_ptr<sf::Drawable> drawable_obj) { drawable_obj_ = drawable_obj; }
-    std::shared_ptr<sf::Drawable> get_drawable() { return drawable_obj_; }
+    sf::Vector2<float> get_position() const { return shape_->getPosition(); };
 
-    float get_mass() const { return mass_; };
+    void set_position(const sf::Vector2<float> &position) const { shape_->setPosition(position); };
+    void set_shape(std::shared_ptr<sf::Shape> shape) { shape_ = shape; }
+    std::shared_ptr<sf::Shape> get_shape() const { return shape_; }
+
     uint64_t get_id() const { return id_; };
-    std::shared_ptr<sf::Drawable> get_drawable() const { return drawable_obj_; }
+    ObjectType get_type() const { return type_; }
+    std::shared_ptr<sf::Shape> get_drawable() const { return shape_; }
 
-    virtual std::string_view to_string() const { return name_; }
-    std::shared_ptr<sf::Drawable> Render() const { return drawable_obj_; };
+    virtual std::string_view ToString() const { return name_; }
 
     virtual void Update(float elapsed_time) = 0;
+    virtual void CollideWith(std::shared_ptr<GameObject>) = 0;
 
 private:
     static uint64_t current_id_;
     uint64_t id_;
-    float mass_{0};
-    sf::Vector2<float> position_{0, 0};
     std::string_view name_;
-    std::shared_ptr<sf::Drawable> drawable_obj_{nullptr};
+    std::shared_ptr<sf::Shape> shape_{nullptr};
+    ObjectType type_;
 };
 
 #endif

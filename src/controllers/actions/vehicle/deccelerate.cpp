@@ -9,7 +9,7 @@ namespace actions::vehicle
 
     void DeccelerateAction::Execute()
     {
-        spdlog::debug("executing deccelerate action");
+        // spdlog::debug("executing deccelerate action");
         vehicle_->Deccelerate();
     }
 }

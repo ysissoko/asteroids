@@ -9,7 +9,7 @@ namespace actions::vehicle
 
     void StopRotateAction::Execute()
     {
-        spdlog::debug("executing stop rotate action");
+        // spdlog::debug("executing stop rotate action");
         vehicle_->RotateStop();
     }
 };

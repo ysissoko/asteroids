@@ -2,7 +2,7 @@
 
 uint64_t GameObject::current_id_ = 1;
 
-GameObject::GameObject(const std::string_view &name) : name_{name}
+GameObject::GameObject(ObjectType type, const std::string_view &name) : name_{name}, type_{type}
 {
     id_ = current_id_++;
 }
