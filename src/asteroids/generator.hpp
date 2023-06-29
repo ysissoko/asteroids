@@ -1,12 +1,15 @@
 #ifndef GENERATOR_H
 #define GENERATOR_H
 
-#include <SFML/System/Clock.hpp>
-#include <src/game/game-state.hpp>
 #include <random>
+
+#include <src/game/game-state.hpp>
+#include <src/ui/hud.hpp>
+#include <src/renderer/soundplayer.hpp>
+
+#include <SFML/System/Clock.hpp>
 #include <nlohmann/json.hpp>
 
-#include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
 class Asteroid;
@@ -14,7 +17,7 @@ class Asteroid;
 class Generator : public std::enable_shared_from_this<Generator>
 {
 public:
-    Generator(std::shared_ptr<GameState> gs, nlohmann::json config);
+    Generator(std::shared_ptr<GameState> gs, nlohmann::json config, std::shared_ptr<HUD> hud, std::shared_ptr<SoundPlayer> sp);
     ~Generator() = default;
 
     void Update(float);
@@ -36,6 +39,8 @@ private:
     float freq_{1};
     float elapsed_time_{0};
     unsigned int shape_size_{0};
+    std::shared_ptr<HUD> hud_{nullptr};
+    std::shared_ptr<SoundPlayer> sp_{nullptr};
 
     std::random_device rd;
     std::mt19937 gen_;

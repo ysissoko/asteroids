@@ -6,16 +6,16 @@
         "MIMode": "gdb",
         "miDebuggerPath": "/usr/bin/gdb"
     },
-    "program": "/home/yasuke/projects/cpp/asteroids/build/Asteroids",
+    "program": "/Users/youssoufsissoko/Desktop/asteroids/build/Asteroids",
     "configurations": [
         {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/home/yasuke/projects/cpp/asteroids/build/Asteroids",
+            "program": "/Users/youssoufsissoko/Desktop/asteroids/build/Asteroids",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "/home/yasuke/projects/cpp/asteroids/build",
+            "cwd": "/Users/youssoufsissoko/Desktop/asteroids/build",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",

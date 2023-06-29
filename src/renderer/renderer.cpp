@@ -15,5 +15,22 @@ void Renderer::Render(sf::RenderWindow &window)
             window.draw(*drawing);
     }
 
+    for (auto ui_object : gs_->get_ui_objects())
+    {
+        for (auto drawing : ui_object->get_drawings())
+        {
+            if (drawing)
+                window.draw(*drawing);
+        }
+
+        for (auto child : ui_object->get_childs())
+        {
+            for (auto drawing : child->get_drawings())
+            {
+                if (drawing)
+                    window.draw(*drawing);
+            }
+        }
+    }
     window.display();
 }

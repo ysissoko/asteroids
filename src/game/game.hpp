@@ -4,7 +4,7 @@
 #include <vector>
 #include <sstream>
 #include <memory>
-#include <SFML/Window.hpp>
+
 #include <src/simulator/simulator.hpp>
 #include <src/renderer/renderer.hpp>
 #include <src/vehicle/vehicle.hpp>
@@ -13,11 +13,13 @@
 #include <src/renderer/soundplayer.hpp>
 #include <src/asteroids/generator.hpp>
 
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
+
 class Game
 {
 private:
-    std::stringstream name_;
-    sf::RenderWindow window_;
     std::shared_ptr<GameState> gs_{nullptr};
     std::shared_ptr<Simulator> sim_{nullptr};
     std::shared_ptr<Renderer> renderer_{nullptr};
@@ -27,6 +29,7 @@ private:
     std::shared_ptr<Generator> gen_{nullptr};
     std::shared_ptr<Generator> gen2_{nullptr};
     std::vector<std::shared_ptr<IEventHandler>> event_handlers_;
+    sf::RenderWindow window_;
 
     void Init();
 
@@ -34,7 +37,7 @@ public:
     explicit Game();
     void Run();
 
-    inline std::string get_name() const { return name_.str(); }
+    static json config;
 };
 
 #endif

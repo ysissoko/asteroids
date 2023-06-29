@@ -1,4 +1,15 @@
 {
+    "assets": {
+        "sounds": {
+            "shoot": "./assets/shoot.wav",
+            "destruction": "./assets/destruction.wav"
+        }
+    },
+    "window": {
+        "width": 800,
+        "height": 800,
+        "title": "Asteroids"
+    },
     "vehicle": {
         "acceleration": 0.002,
         "decceleration": 0.0002,

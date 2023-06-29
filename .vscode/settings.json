@@ -84,7 +84,11 @@
         "codecvt": "cpp",
         "iomanip": "cpp",
         "set": "cpp",
-        "future": "cpp"
-    },
-    "sonarlint.pathToCompileCommands": "${workspaceFolder}/build/compile_commands.json"
+        "future": "cpp",
+        "complex": "cpp",
+        "__nullptr": "cpp",
+        "__string": "cpp",
+        "filesystem": "cpp",
+        "unordered_set": "cpp"
+    }
 }

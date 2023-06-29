@@ -3,8 +3,9 @@
 #include <src/asteroids/asteroid.hpp>
 #include <spdlog/spdlog.h>
 #include <src/common/common.hpp>
+#include <src/game/game.hpp>
 
-Generator::Generator(std::shared_ptr<GameState> gs, nlohmann::json generator_config) : gs_(gs), gen_(rd())
+Generator::Generator(std::shared_ptr<GameState> gs, json generator_config, std::shared_ptr<HUD> hud, std::shared_ptr<SoundPlayer> sp) : gs_(gs), gen_(rd()), hud_{hud}, sp_{sp}
 {
     try
     {
@@ -41,7 +42,7 @@ void Generator::Update(float elapsed_time)
 
 void Generator::GenerateAsteroid(const int life, const float speed, const float trajectory_angle, const sf::Vector2f &initial_pos)
 {
-    gs_->AddObject(std::make_shared<Asteroid>(shared_from_this(), initial_pos, speed, trajectory_angle, life));
+    gs_->AddObject(std::make_shared<Asteroid>(shared_from_this(), initial_pos, speed, trajectory_angle, life, hud_, sp_));
 }
 
 std::vector<sf::Vector2f> Generator::GeneratePoints(const int life)

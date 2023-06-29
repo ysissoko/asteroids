@@ -1,18 +1,16 @@
 #ifndef VEH_H
 #define VEH_H
 
-#include <SFML/Graphics/CircleShape.hpp>
+#include <cmath>
 
 #include <src/game/game-object.hpp>
 #include <src/game/game-state.hpp>
 #include <src/simulator/simulator.hpp>
 #include <src/renderer/soundplayer.hpp>
-
-// States
 #include <src/fsm/vehicle/states/vehicle-context.hpp>
+#include <src/ui/hud.hpp>
 
-#include <cmath>
-
+#include <SFML/Graphics/CircleShape.hpp>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
@@ -39,9 +37,9 @@ private:
     float blink_duration_{0};
     float blink_max_duration_;
     float bullet_speed_{280};
-
+    std::shared_ptr<HUD> hud_;
 public:
-    Vehicle(const std::string_view &name, std::shared_ptr<GameState> gs, std::shared_ptr<SoundPlayer> sp, json config);
+    Vehicle(const std::string_view &name, std::shared_ptr<GameState> gs, std::shared_ptr<SoundPlayer> sp, std::shared_ptr<HUD> hud);
     ~Vehicle() final = default;
 
     void InitDrawable();

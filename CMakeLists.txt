@@ -61,6 +61,9 @@ list(APPEND SOURCES src/simulator/simulator.cpp)
 ## Vehicle
 list(APPEND SOURCES src/vehicle/vehicle.cpp)
 
+## UI
+list(APPEND SOURCES src/ui/hud.cpp)
+
 add_executable(Asteroids ${SOURCES})
 
 target_link_libraries(Asteroids PRIVATE ${EXTRA_LIBS})

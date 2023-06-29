@@ -4,6 +4,7 @@
 #include <SFML/Audio.hpp>
 #include <unordered_map>
 #include <string_view>
+#include <sstream>
 #include <filesystem>
 
 class SoundNotFoundException : public std::exception

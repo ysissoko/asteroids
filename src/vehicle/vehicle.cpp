@@ -1,28 +1,30 @@
 #include <src/vehicle/vehicle.hpp>
 #include <src/vehicle/bullet.hpp>
-#include <SFML/Graphics/CircleShape.hpp>
-#include <spdlog/spdlog.h>
 #include <src/game/object-type.hpp>
 #include <src/common/common.hpp>
+#include <src/game/game.hpp>
 
-Vehicle::Vehicle(const std::string_view &name, std::shared_ptr<GameState> gs, std::shared_ptr<SoundPlayer> sp, json config) : GameObject(ObjectType::SHIP, name), gs_{gs}, sp_{sp}
+#include <SFML/Graphics/CircleShape.hpp>
+#include <spdlog/spdlog.h>
+
+Vehicle::Vehicle(const std::string_view &name, std::shared_ptr<GameState> gs, std::shared_ptr<SoundPlayer> sp, std::shared_ptr<HUD> hud) : GameObject(ObjectType::SHIP, name), gs_{gs}, sp_{sp}, hud_{hud}
 {
     ctx_ = std::make_shared<fsm::vehicle::states::VehicleContext>();
     ctx_->TransitionTo(std::make_shared<fsm::vehicle::states::VehicleState>());
 
-    acceleration_ = config["vehicle"]["acceleration"].get<float>();
-    decceleration_ = config["vehicle"]["decceleration"].get<float>();
+    acceleration_ = Game::config["vehicle"]["acceleration"].get<float>();
+    decceleration_ = Game::config["vehicle"]["decceleration"].get<float>();
 
-    reload_time_ms_ = config["vehicle"]["bullet"]["reloadTimeMs"].get<float>();
-    rotate_speed_ = config["vehicle"]["rotateSpeed"].get<float>();
-    max_speed_ = config["vehicle"]["maxSpeed"].get<unsigned int>();
+    reload_time_ms_ = Game::config["vehicle"]["bullet"]["reloadTimeMs"].get<float>();
+    rotate_speed_ = Game::config["vehicle"]["rotateSpeed"].get<float>();
+    max_speed_ = Game::config["vehicle"]["maxSpeed"].get<unsigned int>();
 
-    life_ = config["vehicle"]["life"].get<uint8_t>();
-    initial_position_ = sf::Vector2f(config["vehicle"]["initialPos"]["x"].get<float>(), config["vehicle"]["initialPos"]["y"].get<float>());
+    life_ = Game::config["vehicle"]["life"].get<uint8_t>();
+    initial_position_ = sf::Vector2f(Game::config["vehicle"]["initialPos"]["x"].get<float>(), Game::config["vehicle"]["initialPos"]["y"].get<float>());
 
-    invincible_max_duration_ = config["vehicle"]["invincibleMaxDuration"].get<float>();
-    blink_max_duration_ = config["vehicle"]["blinkMaxDuration"].get<float>();
-    bullet_speed_ = config["vehicle"]["bullet"]["speed"].get<float>();
+    invincible_max_duration_ = Game::config["vehicle"]["invincibleMaxDuration"].get<float>();
+    blink_max_duration_ = Game::config["vehicle"]["blinkMaxDuration"].get<float>();
+    bullet_speed_ = Game::config["vehicle"]["bullet"]["speed"].get<float>();
 
     InitDrawable();
 }
@@ -30,7 +32,6 @@ Vehicle::Vehicle(const std::string_view &name, std::shared_ptr<GameState> gs, st
 void Vehicle::InitDrawable()
 {
     vehicle_shape_ = std::make_shared<sf::CircleShape>(16, 3);
-    spdlog::debug("shape radius {}", vehicle_shape_->getRadius());
     vehicle_shape_->setOrigin(12, 12);
     vehicle_shape_->setPosition(initial_position_);
     vehicle_shape_->setFillColor(sf::Color::Transparent);
@@ -84,13 +85,16 @@ void Vehicle::Update(float elapsed_time)
 
     sf::Vector2f pos = vehicle_shape_->getPosition();
 
-    if (pos.x >= 800)
+    const unsigned int w_width = Game::config["window"]["width"];
+    const unsigned int w_height = Game::config["window"]["height"];
+
+    if (pos.x >= w_width)
         pos.x = 0;
     if (pos.x <= -16)
-        pos.x = 800;
-    if (pos.y <= 0)
-        pos.y = 600;
-    if (pos.y >= 600)
+        pos.x = w_width;
+    if (pos.y <= -16)
+        pos.y = w_height;
+    if (pos.y >= w_height)
         pos.y = 0;
 
     vehicle_shape_->setPosition(pos);
@@ -116,6 +120,7 @@ void Vehicle::UpdateInvincible(float elapsed_time)
 void Vehicle::Respawn()
 {
     life_--;
+    hud_->UpdateLife(life_);
     invincible_duration_ = 0;
     speed_ = 0;
     RequestIdle();
