@@ -1,8 +1,9 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
+#include "src/game/game-state.hpp"
+
 #include <SFML/Graphics.hpp>
-#include <src/game/game-state.hpp>
 class Renderer
 {
 public:

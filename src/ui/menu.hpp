@@ -1,11 +1,12 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include <src/ui/gui-element.hpp>
+#include "src/ui/gui-element.hpp"
+#include "src/renderer/screens/screen-manager.hpp"
+#include "src/ui/cursor.hpp"
+
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Text.hpp>
-#include <src/ui/cursor.hpp>
-#include <src/renderer/screens/screen-manager.hpp>
 
 class Menu : public GuiElement {
     public:

@@ -2,10 +2,10 @@
 #define ASTEROID_H
 
 
-#include <src/asteroids/generator.hpp>
-#include <src/game/game-object.hpp>
-#include <src/ui/hud.hpp>
-#include <src/renderer/soundplayer.hpp>
+#include "src/asteroids/generator.hpp"
+#include "src/game/game-object.hpp"
+#include "src/ui/hud.hpp"
+#include "src/renderer/soundplayer.hpp"
 
 #include <SFML/Graphics/ConvexShape.hpp>
 class Asteroid : public GameObject, public std::enable_shared_from_this<Asteroid>

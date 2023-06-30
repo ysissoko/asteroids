@@ -1,9 +1,10 @@
 
-#include <src/asteroids/generator.hpp>
-#include <src/asteroids/asteroid.hpp>
+#include "src/asteroids/generator.hpp"
+#include "src/asteroids/asteroid.hpp"
+#include "src/common/common.hpp"
+#include "src/game/game.hpp"
+
 #include <spdlog/spdlog.h>
-#include <src/common/common.hpp>
-#include <src/game/game.hpp>
 
 Generator::Generator(std::shared_ptr<GameState> gs, json generator_config, std::shared_ptr<HUD> hud, std::shared_ptr<SoundPlayer> sp) : gs_(gs), gen_(rd()), hud_{hud}, sp_{sp}
 {

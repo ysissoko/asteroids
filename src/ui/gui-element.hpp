@@ -3,6 +3,7 @@
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics/Drawable.hpp>
+
 #include <memory>
 
 class GuiElement : public std::enable_shared_from_this<GuiElement> {

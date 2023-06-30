@@ -1,6 +1,8 @@
-#include <iostream>
-#include <src/game/game.hpp>
+#include "src/game/game.hpp"
+
 #include <spdlog/spdlog.h>
+
+#include <iostream>
 
 int main(int argc, char **argv)
 {

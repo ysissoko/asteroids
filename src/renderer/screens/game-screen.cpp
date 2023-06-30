@@ -1,5 +1,6 @@
-#include <src/renderer/screens/game-screen.hpp>
-#include <src/game/game.hpp>
+#include "src/renderer/screens/game-screen.hpp"
+#include "src/game/game.hpp"
+
 namespace renderer::screen
 {
     GameScreen::GameScreen(std::shared_ptr<renderer::screen::ScreenManager> scr_mgr) : Screen(scr_mgr)

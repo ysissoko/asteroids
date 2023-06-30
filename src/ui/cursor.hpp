@@ -1,8 +1,9 @@
 #ifndef CURSOR_H
 #define CURSOR_H
 
+#include "src/renderer/screens/screen-manager.hpp"
+
 #include <SFML/Graphics/RectangleShape.hpp>
-#include <src/renderer/screens/screen-manager.hpp>
 #include <spdlog/spdlog.h>
 
 class Cursor : public sf::RectangleShape {

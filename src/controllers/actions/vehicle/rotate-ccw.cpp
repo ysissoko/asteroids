@@ -1,6 +1,5 @@
-#include <src/controllers/actions/vehicle/rotate-ccw.hpp>
+#include "src/controllers/actions/vehicle/rotate-ccw.hpp"
 #include <spdlog/spdlog.h>
-
 namespace actions::vehicle
 {
     RotateCCWAction::RotateCCWAction(std::shared_ptr<Vehicle> vehicle) : vehicle_{vehicle}

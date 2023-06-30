@@ -1,9 +1,9 @@
-#include <src/asteroids/asteroid.hpp>
+#include "src/asteroids/asteroid.hpp"
+#include "src/game/game.hpp"
+
 #include <cmath>
+
 #include <spdlog/spdlog.h>
-
-#include <src/game/game.hpp>
-
 using json = nlohmann::json;
 
 Asteroid::Asteroid(std::shared_ptr<Generator> gen, const sf::Vector2f &initial_pos, float speed, float angle, unsigned int life, std::shared_ptr<HUD> hud, std::shared_ptr<SoundPlayer> sp) : GameObject(ObjectType::ASTEROID, "asteroid"), hud_{hud}, gen_{gen}, angle_{angle}, speed_{speed}, life_{life}, initial_pos_{initial_pos}, sp_{sp}

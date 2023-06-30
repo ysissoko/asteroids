@@ -1,9 +1,10 @@
 #ifndef SIM_H
 #define SIM_H
 
+class Simulator;
+
 #include <string>
 #include <memory>
-class Simulator;
 
 namespace actions
 {

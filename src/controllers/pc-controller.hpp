@@ -1,14 +1,13 @@
 #ifndef PC_CTRL_H
 #define PC_CTRL_H
 
-#include <memory>
+#include "src/controllers/controller.hpp"
+#include "src/controllers/ievent-handler.hpp"
+#include "src/vehicle/vehicle.hpp"
 
 #include <SFML/Window/Event.hpp>
 
-#include <src/controllers/controller.hpp>
-#include <src/controllers/ievent-handler.hpp>
-#include <src/vehicle/vehicle.hpp>
-
+#include <memory>
 class PcController : public Controller
 {
 public:

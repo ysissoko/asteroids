@@ -1,8 +1,9 @@
-#ifndef BULLET_H_
-#define BULLET_H_
+#ifndef BULLET_H
+#define BULLET_H
 
-#include <src/game/game-object.hpp>
-#include <src/vehicle/vehicle.hpp>
+#include "src/game/game-object.hpp"
+#include "src/vehicle/vehicle.hpp"
+
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;

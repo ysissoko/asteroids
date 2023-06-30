@@ -1,16 +1,15 @@
-#include <fstream>
-
-#include <src/game/game.hpp>
-#include <src/controllers/pc-controller.hpp>
-#include <src/ui/hud.hpp>
-#include <src/renderer/screens/game-screen.hpp>
-#include <src/renderer/screens/game-over-screen.hpp>
-#include <config.h>
+#include "src/game/game.hpp"
+#include "src/controllers/pc-controller.hpp"
+#include "src/ui/hud.hpp"
+#include "src/renderer/screens/game-screen.hpp"
+#include "src/renderer/screens/game-over-screen.hpp"
+#include "config.h"
 
 #include <spdlog/spdlog.h>
 #include <nlohmann/json.hpp>
-
 using json = nlohmann::json;
+
+#include <fstream>
 
 json Game::config = {};
 

@@ -1,19 +1,20 @@
 #ifndef VEH_H
 #define VEH_H
 
-#include <cmath>
+#include "src/game/game-object.hpp"
+#include "src/game/game-state.hpp"
+#include "src/simulator/simulator.hpp"
+#include "src/renderer/soundplayer.hpp"
+#include "src/fsm/vehicle/states/vehicle-context.hpp"
+#include "src/ui/hud.hpp"
+#include "src/renderer/screens/screen-manager.hpp"
 
-#include <src/game/game-object.hpp>
-#include <src/game/game-state.hpp>
-#include <src/simulator/simulator.hpp>
-#include <src/renderer/soundplayer.hpp>
-#include <src/fsm/vehicle/states/vehicle-context.hpp>
-#include <src/ui/hud.hpp>
-#include <src/renderer/screens/screen-manager.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
+
+#include <cmath>
 
 class Vehicle : public GameObject, public std::enable_shared_from_this<Vehicle>
 {

@@ -1,13 +1,13 @@
-#include <spdlog/spdlog.h>
+#include "src/controllers/pc-controller.hpp"
+#include "src/controllers/actions/vehicle/accelerate.hpp"
+#include "src/controllers/actions/vehicle/deccelerate.hpp"
+#include "src/controllers/actions/vehicle/rotate-cw.hpp"
+#include "src/controllers/actions/vehicle/rotate-ccw.hpp"
+#include "src/controllers/actions/vehicle/shoot.hpp"
+#include "src/controllers/actions/vehicle/stop-shoot.hpp"
+#include "src/controllers/actions/vehicle/stop-rotate.hpp"
 
-#include <src/controllers/pc-controller.hpp>
-#include <src/controllers/actions/vehicle/accelerate.hpp>
-#include <src/controllers/actions/vehicle/deccelerate.hpp>
-#include <src/controllers/actions/vehicle/rotate-cw.hpp>
-#include <src/controllers/actions/vehicle/rotate-ccw.hpp>
-#include <src/controllers/actions/vehicle/shoot.hpp>
-#include <src/controllers/actions/vehicle/stop-shoot.hpp>
-#include <src/controllers/actions/vehicle/stop-rotate.hpp>
+#include <spdlog/spdlog.h>
 
 using namespace actions::vehicle;
 

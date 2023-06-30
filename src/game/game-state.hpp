@@ -1,12 +1,14 @@
 #ifndef GAME_STATE_H
 #define GAME_STATE_H
 
+#include "src/game/game-object.hpp"
+#include "src/ui/gui-element.hpp"
+
+#include <spdlog/spdlog.h>
+
+#include <algorithm>
 #include <unordered_map>
 #include <memory>
-#include <src/game/game-object.hpp>
-#include <src/ui/gui-element.hpp>
-#include <algorithm>
-#include <spdlog/spdlog.h>
 
 class GameState
 {

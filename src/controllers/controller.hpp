@@ -1,14 +1,14 @@
 #ifndef CTRL_H
 #define CTRL_H
 
-#include <unordered_map>
-#include <string>
-#include <memory>
+#include "src/controllers/actions/action.hpp"
 
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/Keyboard.hpp>
 
-#include <src/controllers/actions/action.hpp>
+#include <unordered_map>
+#include <string>
+#include <memory>
 
 class Controller
 {

@@ -1,11 +1,10 @@
 #ifndef GAME_OVER_SCREEN
 #define GAME_OVER_SCREEN
 
-#include <src/renderer/screens/screen.hpp>
-#include <src/game/game-state.hpp>
-#include <src/renderer/soundplayer.hpp>
-#include <src/ui/menu.hpp>
-
+#include "src/renderer/screens/screen.hpp"
+#include "src/game/game-state.hpp"
+#include "src/renderer/soundplayer.hpp"
+#include "src/ui/menu.hpp"
 
 namespace renderer::screen
 {

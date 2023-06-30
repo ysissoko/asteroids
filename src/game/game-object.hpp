@@ -1,12 +1,13 @@
 #ifndef GAME_OBJ_H
 #define GAME_OBJ_H
 
-#include <string>
-#include <memory>
-#include <SFML/System/Vector2.hpp>
-#include <SFML/Graphics/Shape.hpp>
 #include "object-type.hpp"
 
+#include <SFML/Graphics/Shape.hpp>
+#include <SFML/System/Vector2.hpp>
+
+#include <string>
+#include <memory>
 class GameObject
 {
 public:

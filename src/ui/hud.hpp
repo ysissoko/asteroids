@@ -1,7 +1,8 @@
 #ifndef HUD_H
 #define HUD_H
 
-#include <src/ui/gui-element.hpp>
+#include "src/ui/gui-element.hpp"
+
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Window.hpp>

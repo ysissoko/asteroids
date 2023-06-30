@@ -1,6 +1,8 @@
-#include <src/ui/hud.hpp>
-#include <sstream>
+#include "src/ui/hud.hpp"
+
 #include <spdlog/spdlog.h>
+
+#include <sstream>
 
 HUD::HUD() : GuiElement() {
     Init();

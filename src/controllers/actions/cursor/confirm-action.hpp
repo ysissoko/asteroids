@@ -1,8 +1,8 @@
 #ifndef CONFIRM_ACTION__H
 #define CONFIRM_ACTION__H
 
-#include <src/ui/cursor.hpp>
-#include <src/controllers/actions/action.hpp>
+#include "src/ui/cursor.hpp"
+#include "src/controllers/actions/action.hpp"
 
 namespace actions::cursor
 {

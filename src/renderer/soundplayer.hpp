@@ -2,6 +2,7 @@
 #define SOUND_PLAYER_H_
 
 #include <SFML/Audio.hpp>
+
 #include <unordered_map>
 #include <string_view>
 #include <sstream>

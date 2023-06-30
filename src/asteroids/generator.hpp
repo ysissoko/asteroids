@@ -1,15 +1,14 @@
 #ifndef GENERATOR_H
 #define GENERATOR_H
 
-#include <random>
-
-#include <src/game/game-state.hpp>
-#include <src/ui/hud.hpp>
-#include <src/renderer/soundplayer.hpp>
+#include "src/game/game-state.hpp"
+#include "src/ui/hud.hpp"
+#include "src/renderer/soundplayer.hpp"
 
 #include <SFML/System/Clock.hpp>
 #include <nlohmann/json.hpp>
 
+#include <random>
 using json = nlohmann::json;
 
 class Asteroid;

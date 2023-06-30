@@ -1,9 +1,10 @@
 #ifndef SIMU_H
 #define SIMU_H
 
+#include "src/game/game-state.hpp"
+
 #include <queue>
 #include <memory>
-#include <src/game/game-state.hpp>
 
 class Simulator : public std::enable_shared_from_this<Simulator>
 {

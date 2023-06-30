@@ -1,6 +1,5 @@
-#include <src/renderer/screens/game-over-screen.hpp>
-#include <src/controllers/menu-controller.hpp>
-
+#include "src/renderer/screens/game-over-screen.hpp"
+#include "src/controllers/menu-controller.hpp"
 namespace renderer::screen
 {
     GameOverScreen::GameOverScreen(std::shared_ptr<renderer::screen::ScreenManager> scr_mgr) : Screen(scr_mgr)

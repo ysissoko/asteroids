@@ -1,7 +1,8 @@
-#include <src/renderer/soundplayer.hpp>
-#include <future>
-#include <iostream>
+#include "src/renderer/soundplayer.hpp"
+
 #include <spdlog/spdlog.h>
+
+#include <iostream>
 
 void SoundPlayer::PlaySound(std::string_view name)
 {

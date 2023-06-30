@@ -1,10 +1,10 @@
 #ifndef VEH_CTX_H
 #define VEH_CTX_H
 
+#include "src/fsm/vehicle/states/vehicle-state.hpp"
+
 #include <iostream>
 #include <memory>
-
-#include <src/fsm/vehicle/states/vehicle-state.hpp>
 
 namespace fsm::vehicle::states
 {

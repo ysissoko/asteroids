@@ -1,4 +1,4 @@
-#include <src/renderer/renderer.hpp>
+#include "src/renderer/renderer.hpp"
 
 Renderer::Renderer(std::shared_ptr<GameState> gs) : gs_{gs}
 {

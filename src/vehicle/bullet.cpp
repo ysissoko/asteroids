@@ -1,5 +1,5 @@
-#include <src/vehicle/bullet.hpp>
-#include <src/game/object-type.hpp>
+#include "src/vehicle/bullet.hpp"
+#include "src/game/object-type.hpp"
 
 Bullet::Bullet(std::shared_ptr<Vehicle> veh) : GameObject(ObjectType::BULLET, "bullet")
 {

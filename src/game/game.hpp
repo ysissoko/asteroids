@@ -1,23 +1,21 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "src/simulator/simulator.hpp"
+#include "src/renderer/renderer.hpp"
+#include "src/vehicle/vehicle.hpp"
+#include "src/controllers/ievent-handler.hpp"
+#include "src/controllers/pc-controller.hpp"
+#include "src/renderer/soundplayer.hpp"
+#include "src/asteroids/generator.hpp"
+#include "src/renderer/screens/screen-manager.hpp"
+
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
+
 #include <vector>
 #include <sstream>
 #include <memory>
-
-#include <src/simulator/simulator.hpp>
-#include <src/renderer/renderer.hpp>
-#include <src/vehicle/vehicle.hpp>
-#include <src/controllers/ievent-handler.hpp>
-#include <src/controllers/pc-controller.hpp>
-#include <src/renderer/soundplayer.hpp>
-#include <src/asteroids/generator.hpp>
-#include <src/renderer/screens/screen-manager.hpp>
-
-#include <nlohmann/json.hpp>
-
-using json = nlohmann::json;
-
 class Game
 {
 private:

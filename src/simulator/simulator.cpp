@@ -1,5 +1,5 @@
-#include <src/simulator/simulator.hpp>
-#include <src/controllers/actions/action.hpp>
+#include "src/simulator/simulator.hpp"
+#include "src/controllers/actions/action.hpp"
 
 Simulator::Simulator(std::shared_ptr<GameState> gs) : gs_{gs}
 {

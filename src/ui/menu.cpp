@@ -1,4 +1,5 @@
-#include <src/ui/menu.hpp>
+#include "src/ui/menu.hpp"
+
 #include <spdlog/spdlog.h>
 
 Menu::Menu(std::shared_ptr<renderer::screen::ScreenManager> scr_mgr): GuiElement() {

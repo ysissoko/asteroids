@@ -1,13 +1,13 @@
 #ifndef GAME_SCREEN_H
 #define GAME_SCREEN_H
 
-#include <src/renderer/screens/screen.hpp>
-#include <src/game/game-state.hpp>
-#include <src/renderer/soundplayer.hpp>
-#include <src/vehicle/vehicle.hpp>
-#include <src/controllers/pc-controller.hpp>
-#include <src/asteroids/generator.hpp>
-#include <src/ui/hud.hpp>
+#include "src/renderer/screens/screen.hpp"
+#include "src/game/game-state.hpp"
+#include "src/renderer/soundplayer.hpp"
+#include "src/vehicle/vehicle.hpp"
+#include "src/controllers/pc-controller.hpp"
+#include "src/asteroids/generator.hpp"
+#include "src/ui/hud.hpp"
 
 #include <memory>
 
