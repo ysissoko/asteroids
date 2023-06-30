@@ -28,7 +28,7 @@ class SoundPlayer
 {
 private:
     std::unordered_map<std::string_view, sf::SoundBuffer> sounds;
-
+    sf::Sound sound_;
 public:
     SoundPlayer() = default;
     ~SoundPlayer() = default;

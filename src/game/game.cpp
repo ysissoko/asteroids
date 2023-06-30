@@ -3,6 +3,8 @@
 #include <src/game/game.hpp>
 #include <src/controllers/pc-controller.hpp>
 #include <src/ui/hud.hpp>
+#include <src/renderer/screens/game-screen.hpp>
+#include <src/renderer/screens/game-over-screen.hpp>
 #include <config.h>
 
 #include <spdlog/spdlog.h>
@@ -35,21 +37,14 @@ void Game::Init()
     for (auto& el: config["assets"]["sounds"].items())
         sp_->LoadSound(el.key(), std::filesystem::path(el.value().get<std::string>()));
 
-    auto hud = std::make_shared<HUD>();
-
     gs_ = std::make_shared<GameState>();
-    sim_ = std::make_shared<Simulator>(gs_);
     renderer_ = std::make_shared<Renderer>(gs_);
-    vehicle_ = std::make_shared<Vehicle>(std::string_view("ship"), gs_, sp_, hud);
-    pc_controller_ = std::make_shared<PcController>(vehicle_);
+    scr_manager_ = std::make_shared<renderer::screen::ScreenManager>(gs_, sp_);
 
-    gen_ = std::make_shared<Generator>(gs_, config["generators"][0], hud, sp_);
-    gen2_ = std::make_shared<Generator>(gs_, config["generators"][1], hud, sp_);
+    scr_manager_->AddScreen("game-screen", std::make_shared<renderer::screen::GameScreen>(scr_manager_));
+    scr_manager_->AddScreen("game-over-screen", std::make_shared<renderer::screen::GameOverScreen>(scr_manager_));
 
-    gs_->AddObject(vehicle_);
-    gs_->AddUiObject(hud);
-
-    event_handlers_.push_back(pc_controller_);
+    scr_manager_->SwitchScreen("game-screen");
 }
 
 void Game::Run()
@@ -62,22 +57,20 @@ void Game::Run()
     {
         // on inspecte tous les évènements de la fenêtre qui ont été émis depuis la précédente itération
         sf::Event event;
+        auto screen = scr_manager_->get_current_screen();
+
         while (window_.pollEvent(event))
         {
             // évènement "fermeture demandée" : on ferme la fenêtre
             if (event.type == sf::Event::Closed)
                 window_.close();
-
-            for (auto event_handler : event_handlers_)
-            {
-                event_handler->HandleEvent(event);
-            }
+            
+            if(screen) screen->HandleEvent(event);
         }
 
         auto elapsed = clock.restart().asSeconds();
-        sim_->Update(elapsed);
-        gen_->Update(elapsed);
-        gen2_->Update(elapsed);
+
+        if(screen) screen->Update(elapsed);
 
         renderer_->Render(window_);
     }

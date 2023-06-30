@@ -6,7 +6,7 @@
 class IEventHandler
 {
 public:
-    virtual void HandleEvent(sf::Event &) = 0;
+    virtual void HandleEvent(const sf::Event &) = 0;
 };
 
 #endif

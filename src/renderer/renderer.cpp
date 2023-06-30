@@ -32,5 +32,6 @@ void Renderer::Render(sf::RenderWindow &window)
             }
         }
     }
+
     window.display();
 }

@@ -9,7 +9,7 @@
 #include <src/renderer/soundplayer.hpp>
 #include <src/fsm/vehicle/states/vehicle-context.hpp>
 #include <src/ui/hud.hpp>
-
+#include <src/renderer/screens/screen-manager.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
 #include <nlohmann/json.hpp>
 
@@ -39,7 +39,7 @@ private:
     float bullet_speed_{280};
     std::shared_ptr<HUD> hud_;
 public:
-    Vehicle(const std::string_view &name, std::shared_ptr<GameState> gs, std::shared_ptr<SoundPlayer> sp, std::shared_ptr<HUD> hud);
+    Vehicle(const std::string_view &name, std::shared_ptr<GameState> gs, std::shared_ptr<SoundPlayer> sp, std::shared_ptr<HUD> hud, std::shared_ptr<renderer::screen::ScreenManager> scr_mgr);
     ~Vehicle() final = default;
 
     void InitDrawable();
@@ -66,6 +66,7 @@ public:
 
 private:
     std::shared_ptr<sf::CircleShape> vehicle_shape_;
+    std::shared_ptr<renderer::screen::ScreenManager> scr_mgr_{nullptr};
 };
 
 #endif

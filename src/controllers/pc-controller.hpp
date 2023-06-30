@@ -9,15 +9,12 @@
 #include <src/controllers/ievent-handler.hpp>
 #include <src/vehicle/vehicle.hpp>
 
-class PcController : public Controller, public IEventHandler
+class PcController : public Controller
 {
 public:
     explicit PcController(std::shared_ptr<Vehicle>);
-    virtual void HandleEvent(sf::Event &);
 
 private:
-    void HandleKeyPressed(sf::Keyboard::Key);
-    void HandleKeyReleased(sf::Keyboard::Key);
     void InitActions(std::shared_ptr<Vehicle>);
 };
 

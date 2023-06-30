@@ -12,6 +12,7 @@
 #include <src/controllers/pc-controller.hpp>
 #include <src/renderer/soundplayer.hpp>
 #include <src/asteroids/generator.hpp>
+#include <src/renderer/screens/screen-manager.hpp>
 
 #include <nlohmann/json.hpp>
 
@@ -21,14 +22,9 @@ class Game
 {
 private:
     std::shared_ptr<GameState> gs_{nullptr};
-    std::shared_ptr<Simulator> sim_{nullptr};
     std::shared_ptr<Renderer> renderer_{nullptr};
-    std::shared_ptr<Vehicle> vehicle_{nullptr};
-    std::shared_ptr<PcController> pc_controller_{nullptr};
     std::shared_ptr<SoundPlayer> sp_{nullptr};
-    std::shared_ptr<Generator> gen_{nullptr};
-    std::shared_ptr<Generator> gen2_{nullptr};
-    std::vector<std::shared_ptr<IEventHandler>> event_handlers_;
+    std::shared_ptr<renderer::screen::ScreenManager> scr_manager_{nullptr};
     sf::RenderWindow window_;
 
     void Init();

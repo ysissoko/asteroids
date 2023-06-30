@@ -28,6 +28,8 @@ void Generator::Update(float elapsed_time)
 {
     elapsed_time_ += elapsed_time;
 
+    spdlog::debug("generated asteroids count: {}", gs_->GetObjectCount(ObjectType::ASTEROID));
+    
     if (elapsed_time_ >= freq_ && gs_->GetObjectCount(ObjectType::ASTEROID) < max_asteroids_)
     {
         spdlog::debug("generate new asteroid");

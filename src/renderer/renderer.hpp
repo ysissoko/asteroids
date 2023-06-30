@@ -3,7 +3,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <src/game/game-state.hpp>
-
 class Renderer
 {
 public:

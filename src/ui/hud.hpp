@@ -13,15 +13,10 @@ class HUD : public GuiElement {
 
         void Init();
         void UpdateScore(unsigned long score);
-        void UpdateLife(unsigned long);
         void IncreaseScore();
     private:
         std::shared_ptr<sf::Text> score_txt_;
-        std::shared_ptr<sf::Text> life_txt_;
-
         unsigned long score_;
-        uint8_t life_;
-
         sf::Font font_;
 };
 

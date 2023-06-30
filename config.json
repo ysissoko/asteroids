@@ -2,7 +2,7 @@
     "assets": {
         "sounds": {
             "shoot": "./assets/shoot.wav",
-            "destruction": "./assets/destruction.wav"
+            "destruction": "./assets/Explosion7.ogg"
         }
     },
     "window": {

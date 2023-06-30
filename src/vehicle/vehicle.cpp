@@ -7,7 +7,7 @@
 #include <SFML/Graphics/CircleShape.hpp>
 #include <spdlog/spdlog.h>
 
-Vehicle::Vehicle(const std::string_view &name, std::shared_ptr<GameState> gs, std::shared_ptr<SoundPlayer> sp, std::shared_ptr<HUD> hud) : GameObject(ObjectType::SHIP, name), gs_{gs}, sp_{sp}, hud_{hud}
+Vehicle::Vehicle(const std::string_view &name, std::shared_ptr<GameState> gs, std::shared_ptr<SoundPlayer> sp, std::shared_ptr<HUD> hud, std::shared_ptr<renderer::screen::ScreenManager> scr_mgr) : GameObject(ObjectType::SHIP, name), gs_{gs}, sp_{sp}, hud_{hud}, scr_mgr_(scr_mgr)
 {
     ctx_ = std::make_shared<fsm::vehicle::states::VehicleContext>();
     ctx_->TransitionTo(std::make_shared<fsm::vehicle::states::VehicleState>());
@@ -90,12 +90,14 @@ void Vehicle::Update(float elapsed_time)
 
     if (pos.x >= w_width)
         pos.x = 0;
-    if (pos.x <= -16)
+    else if (pos.x <= 0)
         pos.x = w_width;
-    if (pos.y <= -16)
+    else if (pos.y <= 0)
         pos.y = w_height;
-    if (pos.y >= w_height)
+    else if (pos.y >= w_height)
         pos.y = 0;
+
+    //spdlog::debug("pos y: {}, window height: {}, window width: {}", pos.y, w_height, w_width);
 
     vehicle_shape_->setPosition(pos);
 }
@@ -120,7 +122,6 @@ void Vehicle::UpdateInvincible(float elapsed_time)
 void Vehicle::Respawn()
 {
     life_--;
-    hud_->UpdateLife(life_);
     invincible_duration_ = 0;
     speed_ = 0;
     RequestIdle();
@@ -134,9 +135,6 @@ void Vehicle::CollideWith(std::shared_ptr<GameObject> obj)
 {
     if (obj->get_type() == ObjectType::ASTEROID && invincible_duration_ >= invincible_max_duration_)
     {
-        if (life_ > 0)
-        {
-            Respawn();
-        }
+        scr_mgr_->SwitchScreen("game-over-screen");
     }
 }

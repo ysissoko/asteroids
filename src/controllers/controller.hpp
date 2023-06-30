@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 
+#include <SFML/Window/Event.hpp>
 #include <SFML/Window/Keyboard.hpp>
 
 #include <src/controllers/actions/action.hpp>
@@ -21,6 +22,10 @@ public:
 
     std::unordered_map<sf::Keyboard::Key, std::shared_ptr<actions::Action>> get_kb_press_actions() { return kb_press_actions_; }
     std::unordered_map<sf::Keyboard::Key, std::shared_ptr<actions::Action>> get_kb_release_actions() { return kb_release_actions_; }
+    
+    void HandleKeyPressed(sf::Keyboard::Key);
+    void HandleKeyReleased(sf::Keyboard::Key);
+    void HandleEvent(const sf::Event&);
 
 private:
     std::string name_;

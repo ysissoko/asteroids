@@ -52,11 +52,11 @@ void Asteroid::Update(float elapsed_time)
 
     if (pos.x >= w_width)
         pos.x = 0;
-    if (pos.x <= -width)
+    else if (pos.x <= -width)
         pos.x = w_width;
-    if (pos.y <= -height)
+    else if (pos.y <= -height)
         pos.y = w_height;
-    if (pos.y >= w_height)
+    else if (pos.y >= w_height)
         pos.y = -height;
 
     shape_->setPosition(pos);

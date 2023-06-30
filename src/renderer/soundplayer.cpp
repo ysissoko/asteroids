@@ -9,11 +9,9 @@ void SoundPlayer::PlaySound(std::string_view name)
     if (it == this->sounds.end())
         throw SoundNotFoundException(name);
     spdlog::debug("Playing sound {}", it->first);
-    sf::Sound sound;
-    sound.setBuffer(it->second);
-    // sound.setVolume(100.f);
-    if (sound.getStatus() != sf::SoundSource::Playing)
-        sound.play();
+    
+    sound_.setBuffer(it->second);
+    sound_.play();
 }
 
 void SoundPlayer::LoadSound(std::string_view name, const std::filesystem::path &path)

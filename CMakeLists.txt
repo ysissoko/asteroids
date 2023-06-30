@@ -29,6 +29,7 @@ list(APPEND SOURCES src/main.cpp)
 ## Controllers
 list(APPEND SOURCES src/controllers/controller.cpp)
 list(APPEND SOURCES src/controllers/pc-controller.cpp)
+list(APPEND SOURCES src/controllers/menu-controller.cpp)
 
 ### Actions
 list(APPEND SOURCES src/controllers/actions/vehicle/accelerate.cpp)
@@ -38,6 +39,9 @@ list(APPEND SOURCES src/controllers/actions/vehicle/rotate-cw.cpp)
 list(APPEND SOURCES src/controllers/actions/vehicle/shoot.cpp)
 list(APPEND SOURCES src/controllers/actions/vehicle/stop-rotate.cpp)
 list(APPEND SOURCES src/controllers/actions/vehicle/stop-shoot.cpp)
+
+list(APPEND SOURCES src/controllers/actions/cursor/move-action.cpp)
+list(APPEND SOURCES src/controllers/actions/cursor/confirm-action.cpp)
 
 list(APPEND SOURCES src/fsm/vehicle/states/vehicle-state.cpp)
 list(APPEND SOURCES src/vehicle/bullet.cpp)
@@ -50,10 +54,11 @@ list(APPEND SOURCES src/asteroids/generator.cpp)
 ## Game
 list(APPEND SOURCES src/game/game.cpp)
 list(APPEND SOURCES src/game/game-object.cpp)
-list(APPEND SOURCES src/game/game-state.cpp)
 
 ## Renderer
 list(APPEND SOURCES src/renderer/renderer.cpp)
+list(APPEND SOURCES src/renderer/screens/game-screen.cpp)
+list(APPEND SOURCES src/renderer/screens/game-over-screen.cpp)
 
 ## Simulator
 list(APPEND SOURCES src/simulator/simulator.cpp)
@@ -63,6 +68,7 @@ list(APPEND SOURCES src/vehicle/vehicle.cpp)
 
 ## UI
 list(APPEND SOURCES src/ui/hud.cpp)
+list(APPEND SOURCES src/ui/menu.cpp)
 
 add_executable(Asteroids ${SOURCES})
 
